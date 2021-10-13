@@ -17,6 +17,7 @@ USECASE_FOLDER_NAME = 'usecases'
 class TestPlan:
     def __init__(self, device_config: DeviceConfig, tag_regex: str):
         self.device_config = device_config
+        # todo use tag to filter case, like @smoke @login and so on
         self.tag_regex = tag_regex
 
     def execute(self):

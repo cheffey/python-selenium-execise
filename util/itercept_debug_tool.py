@@ -99,6 +99,7 @@ class InterceptDebugTool:
                 continue
             print('match command: {} {}'.format(keyword, params))
             if not hasattr(self, keyword):
+                self.help()
                 print("Unable to find command: {}".format(keyword))
                 continue
             method = getattr(self, keyword)
@@ -141,3 +142,13 @@ class InterceptDebugTool:
 
     def skip(self):
         self.response = ResponseOption.SKIP
+
+    def help(self):
+        print(color("Commands are listed in intercept_debug_tool as method names:", ConsoleColor.BLUE))
+        print("{}\t\tredo the last failed step".format(color("redo", ConsoleColor.GREEN)))
+        print("{}\t\tskip the last failed step".format(color("skip", ConsoleColor.GREEN)))
+        print("{}\t\tend the test by rethrow the caught exception".format(color("end", ConsoleColor.GREEN)))
+        print("{}\t\tprint all element with ID or with Text in current page".format(color("ls, list", ConsoleColor.GREEN)))
+        print("{}\t\ttake a screenshot of current page, and open it".format(color("ss, screenshot", ConsoleColor.GREEN)))
+        print("{}\t\tprint all elements in previous searches".format(color("cache", ConsoleColor.GREEN)))
+        pass
